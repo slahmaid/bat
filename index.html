@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BEEZ. landing page">
+  <title>BEEZ. | Anchor navigation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="page" class="site">
+    <div id="feather" class="feather" aria-hidden="true"></div>
+
+    <aside class="left-menu" aria-label="Site navigation">
+      <div class="left-menu-top">
+        <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="left-menu-middle" aria-hidden="true">BEEZ.</div>
+      <nav class="section-nav">
+        <a class="section-nav-item anchor" href="#intro" data-index="0"><span class="section-nav-item-number">01</span><span>Home</span></a>
+        <a class="section-nav-item anchor" href="#panel-1" data-index="1"><span class="section-nav-item-number">02</span><span>Panel 1</span></a>
+        <a class="section-nav-item anchor" href="#panel-2" data-index="2"><span class="section-nav-item-number">03</span><span>Panel 2</span></a>
+        <a class="section-nav-item anchor" href="#panel-3" data-index="3"><span class="section-nav-item-number">04</span><span>Panel 3</span></a>
+        <a class="section-nav-item anchor" href="#panel-4" data-index="4"><span class="section-nav-item-number">05</span><span>Panel 4</span></a>
+        <a class="section-nav-item anchor" href="#panel-5" data-index="5"><span class="section-nav-item-number">06</span><span>Panel 5</span></a>
+        <a class="section-nav-item anchor" href="#text-lab" data-index="6"><span class="section-nav-item-number">07</span><span>Text</span></a>
+        <a class="section-nav-item anchor" href="#zoom-showcase" data-index="7"><span class="section-nav-item-number">08</span><span>Vision</span></a>
+      </nav>
+    </aside>
+
+    <main id="content" class="site-content">
+      <section id="intro" class="description panel">
+        <div>
+          <p class="eyebrow">BEEZ. / 2026</p>
+          <h1>Anchor navigation,<br>ScrollTrigger</h1>
+          <div class="scroll-down">Scroll down<span class="arrow" aria-hidden="true"></span></div>
+        </div>
+      </section>
+
+      <section id="panels" aria-label="Horizontal panels">
+        <div id="panels-container">
+          <article id="panel-1" class="panel full-screen black-panel">
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>01</span></div><div class="col-6 panel-copy"><p>Start with a gesture.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-2" class="anchor">Next <span aria-hidden="true">&#8594;</span></a></div></div></div></div></div>
+          </article>
+          <article id="panel-2" class="panel full-screen light-panel">
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>02</span></div><div class="col-6 panel-copy"><p>Let the frame move.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-1" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-3" class="anchor">Next &#8594;</a></div></div></div></div></div>
+          </article>
+          <article id="panel-3" class="panel full-screen black-panel">
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>03</span></div><div class="col-6 panel-copy"><p>Find a new direction.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-2" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-4" class="anchor">Next &#8594;</a></div></div></div></div></div>
+          </article>
+          <article id="panel-4" class="panel full-screen light-panel">
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>04</span></div><div class="col-6 panel-copy"><p>Hold the pause.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-3" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-5" class="anchor">Next &#8594;</a></div></div></div></div></div>
+          </article>
+          <article id="panel-5" class="panel full-screen black-panel">
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>05</span></div><div class="col-6 panel-copy"><p>Arrive somewhere brighter.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-4" class="anchor">&#8592; Prev</a></div></div></div></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="text-lab" class="text-lab" aria-label="Text animation demo">
+        <div class="text-lab__container">
+          <p class="text">Break apart HTML text into characters, words, and/or lines for easy animation.</p>
+        </div>
+      </section>
+
+      <section id="zoom-showcase" class="zoom-showcase" aria-label="Image reveal">
+        <div class="zoom-showcase__content">
+          <section class="zoom-showcase__hero" aria-hidden="true"></section>
+        </div>
+        <div class="zoom-showcase__image-container">
+          <picture>
+            <source media="(max-width: 600px)" srcset="Mobile.webp">
+            <img src="Desktop.webp" alt="Batman standing in a dark city">
+          </picture>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, SplitText);
+
+    const lenis = new Lenis({
+      autoRaf: false,
+      smoothWheel: true,
+      syncTouch: true,
+      lerp: 0.1
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const panelsContainer = document.querySelector('#panels-container');
+    const panels = gsap.utils.toArray('#panels-container .panel');
+    const tween = gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: panelsContainer,
+        pin: true,
+        start: 'top top',
+        scrub: 1,
+        snap: { snapTo: 1 / (panels.length - 1), inertia: false, duration: { min: 0.1, max: 0.1 } },
+        end: () => '+=' + (panelsContainer.offsetWidth - panelsContainer.parentElement.clientWidth)
+      }
+    });
+
+    document.querySelectorAll('.anchor').forEach(anchor => {
+      anchor.addEventListener('click', event => {
+        event.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        let destination = target;
+        if (target && panelsContainer.isSameNode(target.parentElement)) {
+          const totalScroll = tween.scrollTrigger.end - tween.scrollTrigger.start;
+          const totalMovement = (panels.length - 1) * target.offsetWidth;
+          destination = Math.round(tween.scrollTrigger.start + (target.offsetLeft / totalMovement) * totalScroll);
+        }
+        lenis.scrollTo(destination, { duration: 1.1, lock: true });
+      });
+    });
+
+    const leftMenu = document.querySelector('.left-menu');
+    const menuBtn = document.querySelector('.menu-btn');
+    const sectionNavItems = [...document.querySelectorAll('.section-nav-item')];
+
+    function setMenuExpanded(expanded) {
+      leftMenu.classList.toggle('expanded', expanded);
+      menuBtn.setAttribute('aria-expanded', String(expanded));
+      menuBtn.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
+      setTimeout(() => ScrollTrigger.refresh(), 420);
+    }
+
+    menuBtn.addEventListener('click', () => setMenuExpanded(!leftMenu.classList.contains('expanded')));
+    sectionNavItems.forEach(item => item.addEventListener('click', () => setMenuExpanded(false)));
+
+    function updateMenuState() {
+      let activeIndex = 0;
+      const panelTrigger = tween.scrollTrigger;
+      if (lenis.scroll >= panelTrigger.start && lenis.scroll <= panelTrigger.end) {
+        activeIndex = 1 + Math.round(panelTrigger.progress * (panels.length - 1));
+      } else if (lenis.scroll > panelTrigger.end) {
+        activeIndex = lenis.scroll >= document.querySelector('#zoom-showcase').offsetTop - innerHeight * .45 ? 7 : 6;
+      }
+      sectionNavItems.forEach((item, index) => item.classList.toggle('active', index === activeIndex));
+    }
+
+    lenis.on('scroll', updateMenuState);
+    window.addEventListener('resize', updateMenuState);
+    updateMenuState();
+
+    let split;
+    let textAnimation;
+    const textLab = document.querySelector('.text-lab');
+
+    function setupTextAnimation() {
+      split && split.revert();
+      textAnimation && textAnimation.revert();
+      split = SplitText.create('.text-lab .text', { type: 'chars,words,lines' });
+      playLines();
+    }
+
+    function playLines() {
+      if (!split) return;
+      textAnimation && textAnimation.revert();
+      textAnimation = gsap.from(split.lines, {
+        rotationX: -100,
+        transformOrigin: '50% 50% -160px',
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3',
+        stagger: 0.25
+      });
+    }
+
+    ScrollTrigger.create({
+      trigger: textLab,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      onEnter: playLines,
+      onEnterBack: playLines
+    });
+
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(setupTextAnimation);
+    window.addEventListener('resize', setupTextAnimation);
+
+    window.addEventListener('load', () => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '.zoom-showcase',
+          start: 'top top',
+          end: '+=150%',
+          pin: true,
+          scrub: true
+        }
+      })
+        .to('.zoom-showcase__image-container img', {
+          scale: 2,
+          z: 350,
+          transformOrigin: 'center center',
+          ease: 'power1.inOut'
+        })
+        .to('.zoom-showcase__hero', {
+          scale: 1.1,
+          transformOrigin: 'center center',
+          ease: 'power1.inOut'
+        }, '<');
+    });
+  </script>
+</body>
+</html>
