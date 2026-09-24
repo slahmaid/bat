@@ -1425,6 +1425,76 @@ body {
   color: rgba(17, 17, 17, .62);
 }
 
+.daily-protocol {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #010701;
+  background-image: linear-gradient(rgba(197, 239, 66, .06) 2px, transparent 2px), linear-gradient(90deg, rgba(197, 239, 66, .06) 2px, transparent 2px), linear-gradient(rgba(197, 239, 66, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 239, 66, .035) 1px, transparent 1px);
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  color: #dfdcff;
+}
+
+.daily-protocol__scroll {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: rgba(223, 220, 255, .68);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.daily-protocol__scroll span {
+  margin-left: 12px;
+  color: var(--lime);
+  font-size: 1.2rem;
+}
+
+.daily-protocol__wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: min(768px, calc(100% - 48px));
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.daily-protocol__wrap .eyebrow {
+  margin-bottom: 34px;
+  color: var(--lime);
+}
+
+.daily-protocol__quote {
+  max-width: 900px;
+  margin: 0;
+  overflow: hidden;
+  color: #dfdcff;
+  font-size: clamp(2.4rem, 6vw, 6rem);
+  line-height: .98;
+  text-align: center;
+  perspective: 500px;
+}
+
+.daily-protocol__quote .split-line {
+  overflow: hidden;
+}
+
+.daily-protocol__note {
+  max-width: 420px;
+  margin: 38px 0 0;
+  color: rgba(223, 220, 255, .62);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 480px) {
   .code-header {
     padding: 22px 20px;
@@ -1477,6 +1547,14 @@ body {
   .manifesto-panel h3 {
     max-width: 330px;
     font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .daily-protocol__wrap {
+    width: calc(100% - 40px);
+  }
+
+  .daily-protocol__quote {
+    font-size: clamp(2.25rem, 11vw, 4rem);
   }
 }
 

@@ -95,9 +95,19 @@
         </article>
       </div>
     </section>
+
+    <section id="daily-protocol" class="daily-protocol" aria-labelledby="protocol-title">
+      <div class="daily-protocol__scroll">Scroll down <span aria-hidden="true">&#8595;</span></div>
+      <div class="daily-protocol__wrap">
+        <p class="eyebrow">BTMN / DAILY PROTOCOL</p>
+        <p id="protocol-title" class="daily-protocol__quote">Observe. Train. Study. Refine. Execute.</p>
+        <p class="daily-protocol__note">The work becomes instinct when it is repeated with intention.</p>
+      </div>
+    </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script>
     document.querySelectorAll('.rule-card').forEach(card => {
       card.addEventListener('pointermove', event => {
@@ -122,6 +132,30 @@
         end: () => '+=' + (manifestoTrack.scrollWidth - manifestoTrack.parentElement.clientWidth)
       }
     });
+
+    const protocolQuote = document.querySelector('.daily-protocol__quote');
+    let protocolSplit;
+    let protocolAnimation;
+
+    function setupProtocolAnimation() {
+      protocolSplit && protocolSplit.revert();
+      protocolAnimation && protocolAnimation.kill();
+      protocolSplit = SplitText.create(protocolQuote, { type: 'words,chars', linesClass: 'split-line' });
+      protocolAnimation = gsap.from(protocolSplit.chars, {
+        scrollTrigger: {
+          trigger: protocolQuote,
+          toggleActions: 'restart pause resume reverse',
+          start: 'center center'
+        },
+        duration: .6,
+        ease: 'circ.out',
+        y: 80,
+        stagger: .02
+      });
+    }
+
+    ScrollTrigger.addEventListener('refresh', setupProtocolAnimation);
+    setupProtocolAnimation();
   </script>
 </body>
 </html>
