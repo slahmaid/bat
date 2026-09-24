@@ -11,31 +11,11 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="code-page">
-  <aside class="left-menu" aria-label="Site navigation">
-    <div class="left-menu-top">
-      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="left-menu-middle" aria-hidden="true">BTMN</div>
-    <button class="sound-toggle" type="button" aria-label="Unmute theme song" aria-pressed="false">SOUND OFF</button>
-    <time class="left-menu-bottom" datetime="">00:00</time>
-    <nav class="section-nav">
-      <a class="section-nav-item" href="index.html#intro"><span class="section-nav-item-number">01</span><span>Home</span></a>
-      <a class="section-nav-item" href="index.html#panel-1"><span class="section-nav-item-number">02</span><span>Training</span></a>
-      <a class="section-nav-item" href="index.html#panel-2"><span class="section-nav-item-number">03</span><span>Arsenal</span></a>
-      <a class="section-nav-item" href="index.html#panel-3"><span class="section-nav-item-number">04</span><span>Fear</span></a>
-      <a class="section-nav-item" href="index.html#panel-4"><span class="section-nav-item-number">05</span><span>Gotham</span></a>
-      <a class="section-nav-item" href="index.html#panel-5"><span class="section-nav-item-number">06</span><span>Mission</span></a>
-      <a class="section-nav-item active" href="code.html"><span class="section-nav-item-number">07</span><span>The Code</span></a>
-      <a class="section-nav-item" href="index.html#bat-signal"><span class="section-nav-item-number">08</span><span>The Signal</span></a>
-      <a class="section-nav-item" href="index.html#zoom-showcase"><span class="section-nav-item-number">09</span><span>Case Files</span></a>
-      <a class="section-nav-item" href="index.html#mission-briefing"><span class="section-nav-item-number">10</span><span>About BTMN</span></a>
-    </nav>
-  </aside>
+  <header class="code-header">
+    <a class="code-header__brand" href="index.html" aria-label="Return to BTMN home">BTMN</a>
+  </header>
 
-  <main class="site-content">
-    <audio id="theme-song" src="assets/btmn_theme_1989.mp3" loop preload="auto" muted></audio>
+  <main>
     <section class="code-hero" aria-labelledby="code-title">
       <div class="code-hero__stars" aria-hidden="true">
         <div id="stars"></div>
@@ -124,50 +104,20 @@
       </div>
     </section>
 
-    <section class="airlock-closing" aria-labelledby="airlock-title">
-      <video class="airlock-closing__video" poster="https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-poster.jpg" muted playsinline preload="auto" aria-hidden="true">
-        <source src="https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-1080p.mp4" type="video/mp4">
-      </video>
-      <div class="airlock-closing__shade" aria-hidden="true"></div>
-      <div class="airlock-closing__title">
-        <p class="eyebrow">BTMN / CLOSING FILE</p>
-        <h2 id="airlock-title">The airlock opens.</h2>
+    <section class="closing-video" aria-labelledby="closing-video-title">
+      <div class="closing-video__stage">
+        <div class="closing-video__frame">
+          <video class="closing-video__media" autoplay loop muted playsinline preload="metadata" aria-label="Abstract motion study for the BTMN closing sequence">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          </video>
+          <div class="closing-video__overlay">
+            <p class="eyebrow">BTMN / THE WORK CONTINUES</p>
+            <h2 id="closing-video-title">Built, not born.</h2>
+            <p>What you repeat becomes what you are.</p>
+          </div>
+        </div>
       </div>
-      <p class="airlock-closing__tagline">Everything you know fits in one half of the frame.</p>
-      <div class="airlock-closing__progress" aria-hidden="true"><span></span></div>
     </section>
-
-    <footer class="site-footer" aria-label="Site footer">
-      <div class="site-footer__surface" aria-hidden="true"></div>
-      <div class="site-footer__content">
-        <p class="site-footer__wordmark" aria-label="BTMN"><span>B</span><span>T</span><span>M</span><span>N</span></p>
-        <div class="site-footer__columns">
-          <div class="site-footer__column">
-            <h2>Navigate</h2>
-            <a href="index.html#intro">Studio</a>
-            <a href="index.html#mission-briefing">Approach</a>
-            <a href="index.html#panel-2">Projects</a>
-            <a href="code.html">The Code</a>
-          </div>
-          <div class="site-footer__column">
-            <h2>Follow</h2>
-            <a href="index.html#mission-briefing">Instagram</a>
-            <a href="index.html#mission-briefing">LinkedIn</a>
-            <a href="index.html#mission-briefing">Vimeo</a>
-          </div>
-          <div class="site-footer__column">
-            <h2>Visit</h2>
-            <p>By appointment only</p>
-            <p>730 Prangley Ave.<br>Lancaster, PA 17603</p>
-          </div>
-        </div>
-        <div class="site-footer__base">
-          <span>All rights reserved. All wrongs restored.</span>
-          <span>Work hard. Be satisfied.</span>
-          <span>&copy; 2026, made by btmn</span>
-        </div>
-      </div>
-    </footer>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -221,102 +171,26 @@
     ScrollTrigger.addEventListener('refresh', setupProtocolAnimation);
     setupProtocolAnimation();
 
-    const airlock = document.querySelector('.airlock-closing');
-    const airlockVideo = airlock.querySelector('video');
-    const airlockTitle = airlock.querySelector('.airlock-closing__title');
-    const airlockTagline = airlock.querySelector('.airlock-closing__tagline');
-    const airlockShade = airlock.querySelector('.airlock-closing__shade');
-    const airlockProgress = airlock.querySelector('.airlock-closing__progress span');
-    let airlockDuration = 0;
-    let airlockSeekFrame = 0;
-    let airlockTargetTime = 0;
+    const closingStage = document.querySelector('.closing-video__stage');
+    const closingFrame = document.querySelector('.closing-video__frame');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    function paintAirlock(progress) {
-      const taglineProgress = Math.max(0, (progress - .8) / .2);
-      airlockTitle.style.opacity = String(1 - Math.min(progress / .35, 1));
-      airlockTitle.style.transform = `translateY(${progress * -24}px) scale(${.96 + (1 - progress) * .04})`;
-      airlockTagline.style.opacity = String(taglineProgress);
-      airlockTagline.style.transform = `translateY(${(1 - taglineProgress) * 20}px)`;
-      airlockShade.style.opacity = String(Math.max(1 - progress / .35, taglineProgress));
-      airlockProgress.style.transform = `scaleX(${progress})`;
-
-      if (!airlockDuration || airlockVideo.readyState < 1) return;
-      airlockTargetTime = Math.min(progress * airlockDuration, Math.max(0, airlockDuration - .05));
-      if (airlockSeekFrame) return;
-      airlockSeekFrame = requestAnimationFrame(() => {
-        airlockSeekFrame = 0;
-        if (!airlockVideo.seeking) airlockVideo.currentTime = airlockTargetTime;
-      });
-    }
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      airlock.classList.add('airlock-closing--fallback');
-      paintAirlock(1);
-    } else {
-      ScrollTrigger.create({
-        trigger: airlock,
-        start: 'top top',
-        end: () => '+=' + Math.min(3200, Math.max(1600, innerHeight * 2.5)),
-        pin: true,
-        scrub: 1,
-        onUpdate: self => paintAirlock(self.progress)
-      });
-    }
-
-    airlockVideo.addEventListener('loadedmetadata', () => {
-      airlockDuration = airlockVideo.duration || 0;
-      airlockVideo.pause();
-    }, { once: true });
-    airlockVideo.addEventListener('error', () => airlock.classList.add('airlock-closing--fallback'), { once: true });
-    if (airlockVideo.readyState >= 1) airlockDuration = airlockVideo.duration || 0;
-
-    const leftMenu = document.querySelector('.left-menu');
-    const menuBtn = document.querySelector('.menu-btn');
-    const sectionNavItems = [...document.querySelectorAll('.section-nav-item')];
-    const themeSong = document.querySelector('#theme-song');
-    const soundToggle = document.querySelector('.sound-toggle');
-    const clock = document.querySelector('.left-menu-bottom');
-
-    function setMenuExpanded(expanded) {
-      leftMenu.classList.toggle('expanded', expanded);
-      menuBtn.setAttribute('aria-expanded', String(expanded));
-      menuBtn.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
-    }
-
-    function updateSoundControl() {
-      const isPlaying = !themeSong.muted;
-      soundToggle.textContent = isPlaying ? 'SOUND ON' : 'SOUND OFF';
-      soundToggle.setAttribute('aria-label', isPlaying ? 'Mute theme song' : 'Unmute theme song');
-      soundToggle.setAttribute('aria-pressed', String(isPlaying));
-      soundToggle.classList.toggle('is-playing', isPlaying);
-    }
-
-    function updateClock() {
-      const now = new Date();
-      clock.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-      clock.dateTime = now.toISOString();
-    }
-
-    menuBtn.addEventListener('click', () => setMenuExpanded(!leftMenu.classList.contains('expanded')));
-    sectionNavItems.forEach(item => item.addEventListener('click', () => setMenuExpanded(false)));
-    soundToggle.addEventListener('click', async () => {
-      if (!themeSong.muted) {
-        themeSong.muted = true;
-        updateSoundControl();
+    function updateClosingScale() {
+      if (reduceMotion.matches) {
+        closingFrame.style.transform = 'scale(1)';
         return;
       }
-      themeSong.muted = false;
-      try {
-        await themeSong.play();
-      } catch (error) {
-        themeSong.muted = true;
-      }
-      updateSoundControl();
-    });
+      const bounds = closingStage.getBoundingClientRect();
+      const maxScroll = closingStage.offsetHeight - window.innerHeight;
+      const progress = Math.min(Math.max(-bounds.top / maxScroll, 0), 1);
+      const scale = .25 + progress * .75;
+      closingFrame.style.transform = `scale(${scale})`;
+    }
 
-    updateSoundControl();
-    updateClock();
-    setInterval(updateClock, 60000);
+    window.addEventListener('scroll', updateClosingScale, { passive: true });
+    window.addEventListener('resize', updateClosingScale);
+    reduceMotion.addEventListener('change', updateClosingScale);
+    updateClosingScale();
   </script>
 </body>
 </html>

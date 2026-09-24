@@ -43,6 +43,7 @@ body {
   overflow: hidden;
   background: #111;
   color: var(--paper);
+  border-right: 1px solid rgba(255, 255, 255, .08);
   transition: width 400ms cubic-bezier(.16, 1, .3, 1), box-shadow 400ms ease;
 }
 
@@ -713,6 +714,7 @@ body {
 .mission-grid {
   display: grid;
   gap: 0;
+  border-top: 1px solid rgba(248, 248, 245, .2);
 }
 
 .mission-capability {
@@ -720,6 +722,7 @@ body {
   grid-template-columns: 42px 1fr;
   gap: 12px;
   padding: 22px 0;
+  border-bottom: 1px solid rgba(248, 248, 245, .2);
 }
 
 .mission-capability span {
@@ -885,18 +888,6 @@ body {
     padding-left: 52px;
   }
 
-  .menu-btn {
-    width: 44px;
-    height: 44px;
-    padding: 12px 10px;
-  }
-
-  .section-nav-item {
-    min-height: 44px;
-    margin: 2px 0;
-    padding: 8px 0;
-  }
-
   .description {
     min-height: 100svh;
     padding: 104px 20px 64px;
@@ -999,15 +990,6 @@ body {
 
   .mission-grid {
     margin-top: 88px;
-  }
-
-  .site-footer__column {
-    gap: 9px;
-    line-height: 1.5;
-  }
-
-  .site-footer__column a {
-    min-height: 28px;
   }
 
   .text-lab__container {
@@ -1495,97 +1477,64 @@ body {
   line-height: 1.45;
 }
 
-.airlock-closing {
+.closing-video {
+  background: #010701;
+}
+
+.closing-video__stage {
   position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #05070d;
-  background-image: url('https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-poster.jpg'), url('../assets/Desktop.webp');
-  background-position: center, center;
-  background-size: cover, cover;
-  color: #f2f4f8;
+  height: 200vh;
 }
 
-.airlock-closing__video,
-.airlock-closing__shade {
-  position: absolute;
-  inset: 0;
+.closing-video__frame {
+  position: sticky;
+  top: 0;
+  display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  transform: scale(.25);
+  transform-origin: center center;
+  will-change: transform;
 }
 
-.airlock-closing__video {
+.closing-video__media {
+  display: block;
+  width: 80vw;
+  max-width: 960px;
+  height: 60vh;
+  border-radius: 20px;
+  background: #111;
   object-fit: cover;
-  opacity: .9;
-  transform-origin: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .5);
 }
 
-.airlock-closing--fallback .airlock-closing__video {
-  display: none;
-}
-
-.airlock-closing--fallback .airlock-closing__tagline {
-  opacity: 1;
-  transform: none;
-}
-
-.airlock-closing--fallback .airlock-closing__shade {
-  opacity: .8;
-}
-
-.airlock-closing__shade {
-  background: radial-gradient(ellipse 62% 44% at 50% 50%, rgba(5, 7, 13, .7), rgba(5, 7, 13, 0) 72%);
-  pointer-events: none;
-}
-
-.airlock-closing__title,
-.airlock-closing__tagline {
+.closing-video__overlay {
   position: absolute;
-  top: 50%;
-  right: 8%;
-  left: 8%;
-  z-index: 1;
-  margin: 0;
+  display: grid;
+  justify-items: center;
+  width: min(90%, 800px);
+  color: #fff;
   text-align: center;
-  transform: translateY(-50%);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .8);
 }
 
-.airlock-closing__title .eyebrow {
-  color: #c5ef42;
+.closing-video__overlay .eyebrow {
+  color: var(--lime);
 }
 
-.airlock-closing__title h2 {
-  margin: 24px 0 0;
-  font-size: clamp(3.5rem, 8vw, 9rem);
-  line-height: .86;
+.closing-video__overlay h2 {
+  margin: 18px 0 20px;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: .88;
   letter-spacing: -.07em;
 }
 
-.airlock-closing__tagline {
-  opacity: 0;
-  font-size: clamp(1.4rem, 3.4vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, .6);
-}
-
-.airlock-closing__progress {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  height: 3px;
-  background: rgba(255, 255, 255, .16);
-}
-
-.airlock-closing__progress span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, .45), rgba(255, 255, 255, .95));
-  transform: scaleX(0);
-  transform-origin: left;
+.closing-video__overlay p:last-child {
+  margin: 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: clamp(1rem, 2vw, 1.3rem);
 }
 
 @media (max-width: 480px) {
@@ -1598,7 +1547,7 @@ body {
   }
 
   .code-hero h1 {
-    font-size: clamp(3rem, 14vw, 5.5rem);
+    font-size: clamp(3.5rem, 16vw, 5.5rem);
   }
 
   .code-hero__statement {
@@ -1629,14 +1578,8 @@ body {
   }
 
   .code-manifesto__intro {
-    min-height: 50svh;
+    min-height: 50vh;
     padding: 72px 20px;
-  }
-
-  .manifesto-track,
-  .manifesto-panel,
-  .airlock-closing {
-    height: 100svh;
   }
 
   .manifesto-panel {
@@ -1656,18 +1599,20 @@ body {
     font-size: clamp(2.25rem, 11vw, 4rem);
   }
 
-  .airlock-closing__title,
-  .airlock-closing__tagline {
-    right: 20px;
-    left: 20px;
+  .closing-video__media {
+    width: 88vw;
+    height: 58vh;
+    border-radius: 12px;
   }
 
-  .airlock-closing__title h2 {
-    font-size: clamp(3.1rem, 14vw, 5rem);
+  .closing-video__overlay {
+    width: calc(100% - 40px);
   }
+}
 
-  .site-footer__base {
-    font-size: .58rem;
+@media (prefers-reduced-motion: reduce) {
+  .closing-video__frame {
+    transform: scale(1);
   }
 }
 
