@@ -1520,6 +1520,19 @@ body {
   transform-origin: center;
 }
 
+.airlock-closing--fallback .airlock-closing__video {
+  display: none;
+}
+
+.airlock-closing--fallback .airlock-closing__tagline {
+  opacity: 1;
+  transform: none;
+}
+
+.airlock-closing--fallback .airlock-closing__shade {
+  opacity: .8;
+}
+
 .airlock-closing__shade {
   background: radial-gradient(ellipse 62% 44% at 50% 50%, rgba(5, 7, 13, .7), rgba(5, 7, 13, 0) 72%);
   pointer-events: none;
@@ -1573,19 +1586,6 @@ body {
   background: linear-gradient(90deg, rgba(255, 255, 255, .45), rgba(255, 255, 255, .95));
   transform: scaleX(0);
   transform-origin: left;
-}
-
-.airlock-closing--fallback .airlock-closing__video {
-  display: none;
-}
-
-.airlock-closing--fallback .airlock-closing__tagline {
-  opacity: 1;
-  transform: none;
-}
-
-.airlock-closing--fallback .airlock-closing__shade {
-  opacity: .8;
 }
 
 @media (max-width: 480px) {
