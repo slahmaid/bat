@@ -789,12 +789,15 @@ body {
 }
 
 .site-footer__wordmark {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
   margin: 0;
   color: #fff;
-  font-size: clamp(5rem, 18vw, 17rem);
+  font-size: clamp(7rem, 24vw, 30rem);
   font-weight: 700;
-  letter-spacing: -.09em;
-  line-height: .72;
+  letter-spacing: 0;
+  line-height: .78;
   white-space: nowrap;
 }
 
@@ -1026,7 +1029,7 @@ body {
   }
 
   .site-footer__wordmark {
-    font-size: clamp(4.5rem, 21vw, 8rem);
+    font-size: clamp(4.5rem, 26vw, 9rem);
   }
 
   .site-footer__columns {
