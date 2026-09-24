@@ -103,21 +103,6 @@
         <p class="daily-protocol__note">The work becomes instinct when it is repeated with intention.</p>
       </div>
     </section>
-
-    <section class="closing-video" aria-labelledby="closing-video-title">
-      <div class="closing-video__stage">
-        <div class="closing-video__frame">
-          <video class="closing-video__media" autoplay loop muted playsinline preload="metadata" aria-label="Abstract motion study for the BTMN closing sequence">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-          </video>
-          <div class="closing-video__overlay">
-            <p class="eyebrow">BTMN / THE WORK CONTINUES</p>
-            <h2 id="closing-video-title">Built, not born.</h2>
-            <p>What you repeat becomes what you are.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -151,46 +136,48 @@
     let protocolSplit;
     let protocolAnimation;
 
-    function setupProtocolAnimation() {
-      protocolSplit && protocolSplit.revert();
-      protocolAnimation && protocolAnimation.kill();
-      protocolSplit = SplitText.create(protocolQuote, { type: 'words,chars', linesClass: 'split-line' });
-      protocolAnimation = gsap.from(protocolSplit.chars, {
-        scrollTrigger: {
+    function playProtocolAnimation(mode, onScroll = false) {
+      if (!protocolSplit) return;
+      if (protocolAnimation) {
+        protocolAnimation.revert();
+        protocolAnimation.kill();
+      }
+      const targets = protocolSplit[mode];
+      if (!targets || !targets.length) return;
+      const animation = {
+        duration: mode === 'lines' ? .8 : .7,
+        ease: mode === 'words' ? 'back.out' : mode === 'lines' ? 'power3' : 'power4',
+        stagger: mode === 'lines' ? .25 : mode === 'words' ? .15 : .04,
+        opacity: 0
+      };
+
+      if (mode === 'chars') animation.x = 150;
+      if (mode === 'words') {
+        animation.y = -100;
+        animation.rotation = 'random(-80, 80)';
+      }
+      if (mode === 'lines') {
+        animation.rotationX = -100;
+        animation.transformOrigin = '50% 50% -160px';
+      }
+      if (onScroll) {
+        animation.scrollTrigger = {
           trigger: protocolQuote,
           toggleActions: 'restart pause resume reverse',
           start: 'center center'
-        },
-        duration: .6,
-        ease: 'circ.out',
-        y: 80,
-        stagger: .02
-      });
+        };
+      }
+      protocolAnimation = gsap.from(targets, animation);
+    }
+
+    function setupProtocolAnimation() {
+      protocolSplit && protocolSplit.revert();
+      protocolSplit = SplitText.create(protocolQuote, { type: 'words,chars', linesClass: 'split-line' });
+      playProtocolAnimation('chars', true);
     }
 
     ScrollTrigger.addEventListener('refresh', setupProtocolAnimation);
     setupProtocolAnimation();
-
-    const closingStage = document.querySelector('.closing-video__stage');
-    const closingFrame = document.querySelector('.closing-video__frame');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function updateClosingScale() {
-      if (reduceMotion.matches) {
-        closingFrame.style.transform = 'scale(1)';
-        return;
-      }
-      const bounds = closingStage.getBoundingClientRect();
-      const maxScroll = closingStage.offsetHeight - window.innerHeight;
-      const progress = Math.min(Math.max(-bounds.top / maxScroll, 0), 1);
-      const scale = .25 + progress * .75;
-      closingFrame.style.transform = `scale(${scale})`;
-    }
-
-    window.addEventListener('scroll', updateClosingScale, { passive: true });
-    window.addEventListener('resize', updateClosingScale);
-    reduceMotion.addEventListener('change', updateClosingScale);
-    updateClosingScale();
   </script>
 </body>
 </html>
