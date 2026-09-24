@@ -1063,6 +1063,114 @@ body {
   }
 }
 
+.code-manifesto {
+  overflow: hidden;
+  padding: clamp(80px, 10vw, 140px) 0 100px;
+  background: #010701;
+}
+
+.code-manifesto__intro {
+  max-width: 1280px;
+  margin: 0 auto 52px;
+  padding: 0 clamp(24px, 6vw, 96px);
+}
+
+.code-manifesto__intro .eyebrow {
+  color: var(--lime);
+}
+
+.code-manifesto__intro h2 {
+  margin: 18px 0 14px;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: .9;
+  letter-spacing: -.07em;
+}
+
+.code-manifesto__intro > p:last-child {
+  margin: 0;
+  color: rgba(255, 255, 255, .62);
+  font-size: 1.1rem;
+}
+
+.manifesto-panels {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 0 clamp(24px, 6vw, 96px) 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(255, 255, 255, .5) transparent;
+  scrollbar-width: thin;
+}
+
+.manifesto-panel {
+  display: flex;
+  min-width: min(76vw, 920px);
+  min-height: min(62vh, 620px);
+  flex: 0 0 min(76vw, 920px);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 4vw, 56px);
+  scroll-snap-align: start;
+  color: #fff;
+}
+
+.manifesto-panel span {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.manifesto-panel h3 {
+  max-width: 720px;
+  margin: auto 0 22px;
+  font-size: clamp(3rem, 7vw, 8rem);
+  line-height: .86;
+  letter-spacing: -.07em;
+}
+
+.manifesto-panel p {
+  max-width: 420px;
+  margin: 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  line-height: 1.4;
+}
+
+.manifesto-panel--lime { background: #7c9e32; }
+.manifesto-panel--paper { background: #e6e5dc; color: #101010; }
+.manifesto-panel--paper p { color: rgba(16, 16, 16, .65); }
+.manifesto-panel--blue { background: #32647b; }
+.manifesto-panel--yellow { background: #c39517; color: #101010; }
+.manifesto-panel--yellow p { color: rgba(16, 16, 16, .65); }
+.manifesto-panel--red { background: #a83c3c; }
+
+@media (max-width: 480px) {
+  .code-manifesto {
+    padding: 80px 0 72px;
+  }
+
+  .code-manifesto__intro {
+    margin-bottom: 36px;
+    padding: 0 20px;
+  }
+
+  .code-manifesto__intro > p:last-child {
+    font-size: 1rem;
+  }
+
+  .manifesto-panels {
+    gap: 12px;
+    padding: 0 20px 18px;
+  }
+
+  .manifesto-panel {
+    min-width: calc(100vw - 40px);
+    min-height: 480px;
+    flex-basis: calc(100vw - 40px);
+    padding: 24px;
+  }
+}
+
 .code-page {
   min-width: 320px;
   background: #090a0f;
