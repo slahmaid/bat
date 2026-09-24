@@ -97,6 +97,8 @@
     </section>
 
     <section id="daily-protocol" class="daily-protocol" aria-labelledby="protocol-title">
+      <canvas class="daily-protocol__canvas" aria-hidden="true"></canvas>
+      <div class="daily-protocol__veil" aria-hidden="true"></div>
       <div class="daily-protocol__wrap">
         <p class="eyebrow">BTMN / DAILY PROTOCOL</p>
         <p id="protocol-title" class="daily-protocol__quote">Observe. Train. Study. Refine. Execute.</p>
@@ -108,6 +110,111 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script>
+    const asciiCanvas = document.querySelector('.daily-protocol__canvas');
+    const asciiContext = asciiCanvas.getContext('2d', { alpha: false });
+    const sourceCanvas = document.createElement('canvas');
+    const sourceContext = sourceCanvas.getContext('2d', { willReadFrequently: true });
+    const sourceImage = new Image();
+    const asciiSettings = {
+      cellSize: 4,
+      coverage: 100,
+      contrast: 1.15,
+      grayscale: .92,
+      tint: [197, 239, 66],
+      tintOpacity: .45,
+      charSet: ' .:-=+*#%@',
+      animated: true,
+      animIntensity: .6
+    };
+    let asciiWidth = 0;
+    let asciiHeight = 0;
+    let asciiFrame;
+
+    function resizeAsciiCanvas() {
+      const bounds = asciiCanvas.parentElement.getBoundingClientRect();
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      asciiWidth = Math.max(1, Math.floor(bounds.width));
+      asciiHeight = Math.max(1, Math.floor(bounds.height));
+      asciiCanvas.width = Math.floor(asciiWidth * pixelRatio);
+      asciiCanvas.height = Math.floor(asciiHeight * pixelRatio);
+      asciiCanvas.style.width = `${asciiWidth}px`;
+      asciiCanvas.style.height = `${asciiHeight}px`;
+      sourceCanvas.width = asciiWidth;
+      sourceCanvas.height = asciiHeight;
+      drawAscii(0);
+    }
+
+    function drawAscii(time) {
+      if (!sourceImage.naturalWidth || !asciiWidth) return;
+      const pixelRatio = asciiCanvas.width / asciiWidth;
+      const scale = Math.max(asciiWidth / sourceImage.naturalWidth, asciiHeight / sourceImage.naturalHeight);
+      const imageWidth = sourceImage.naturalWidth * scale;
+      const imageHeight = sourceImage.naturalHeight * scale;
+      sourceContext.clearRect(0, 0, asciiWidth, asciiHeight);
+      sourceContext.drawImage(sourceImage, (asciiWidth - imageWidth) / 2, (asciiHeight - imageHeight) / 2, imageWidth, imageHeight);
+      const pixels = sourceContext.getImageData(0, 0, asciiWidth, asciiHeight).data;
+      const cellSize = asciiSettings.cellSize;
+      const flicker = 1 + Math.sin(time * .006) * .08 * asciiSettings.animIntensity;
+
+      asciiContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      asciiContext.fillStyle = '#010701';
+      asciiContext.fillRect(0, 0, asciiWidth, asciiHeight);
+      asciiContext.font = `${cellSize + 2}px monospace`;
+      asciiContext.textBaseline = 'top';
+
+      for (let y = 0; y < asciiHeight; y += cellSize) {
+        for (let x = 0; x < asciiWidth; x += cellSize) {
+          if (Math.random() * 100 > asciiSettings.coverage) continue;
+          const sampleX = Math.min(asciiWidth - 1, x + Math.floor(cellSize / 2));
+          const sampleY = Math.min(asciiHeight - 1, y + Math.floor(cellSize / 2));
+          const offset = (sampleY * asciiWidth + sampleX) * 4;
+          let red = pixels[offset];
+          let green = pixels[offset + 1];
+          let blue = pixels[offset + 2];
+          const luminance = (red * .2126 + green * .7152 + blue * .0722) / 255;
+          const gray = luminance * 255;
+          red = gray + (red - gray) * (1 - asciiSettings.grayscale);
+          green = gray + (green - gray) * (1 - asciiSettings.grayscale);
+          blue = gray + (blue - gray) * (1 - asciiSettings.grayscale);
+          red = Math.max(0, Math.min(255, (red - 128) * asciiSettings.contrast + 128));
+          green = Math.max(0, Math.min(255, (green - 128) * asciiSettings.contrast + 128));
+          blue = Math.max(0, Math.min(255, (blue - 128) * asciiSettings.contrast + 128));
+          red = red * (1 - asciiSettings.tintOpacity) + asciiSettings.tint[0] * asciiSettings.tintOpacity;
+          green = green * (1 - asciiSettings.tintOpacity) + asciiSettings.tint[1] * asciiSettings.tintOpacity;
+          blue = blue * (1 - asciiSettings.tintOpacity) + asciiSettings.tint[2] * asciiSettings.tintOpacity;
+          const characterIndex = Math.min(asciiSettings.charSet.length - 1, Math.floor(luminance * (asciiSettings.charSet.length - 1)));
+          const character = asciiSettings.charSet[characterIndex];
+          if (character === ' ') continue;
+          const alpha = Math.min(1, (.18 + luminance * .92) * flicker);
+          asciiContext.fillStyle = `rgba(${red | 0}, ${green | 0}, ${blue | 0}, ${alpha})`;
+          asciiContext.fillText(character, x, y);
+        }
+      }
+
+      asciiContext.globalCompositeOperation = 'screen';
+      const glow = asciiContext.createRadialGradient(asciiWidth * .5, asciiHeight * .45, 0, asciiWidth * .5, asciiHeight * .45, asciiWidth * .7);
+      glow.addColorStop(0, 'rgba(197, 239, 66, .08)');
+      glow.addColorStop(1, 'rgba(197, 239, 66, 0)');
+      asciiContext.fillStyle = glow;
+      asciiContext.fillRect(0, 0, asciiWidth, asciiHeight);
+      asciiContext.globalCompositeOperation = 'source-over';
+      asciiContext.fillStyle = 'rgba(255, 255, 255, .035)';
+      for (let y = 0; y < asciiHeight; y += 5) asciiContext.fillRect(0, y, asciiWidth, 1);
+      const vignette = asciiContext.createRadialGradient(asciiWidth / 2, asciiHeight / 2, asciiHeight * .2, asciiWidth / 2, asciiHeight / 2, asciiHeight * .75);
+      vignette.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      vignette.addColorStop(1, 'rgba(0, 0, 0, .72)');
+      asciiContext.fillStyle = vignette;
+      asciiContext.fillRect(0, 0, asciiWidth, asciiHeight);
+
+      if (asciiSettings.animated && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        asciiFrame = requestAnimationFrame(drawAscii);
+      }
+    }
+
+    sourceImage.src = 'assets/Desktop.webp';
+    sourceImage.addEventListener('load', resizeAsciiCanvas);
+    window.addEventListener('resize', resizeAsciiCanvas);
+
     document.querySelectorAll('.rule-card').forEach(card => {
       card.addEventListener('pointermove', event => {
         const bounds = card.getBoundingClientRect();
