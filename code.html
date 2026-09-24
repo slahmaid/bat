@@ -11,11 +11,31 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="code-page">
-  <header class="code-header">
-    <a class="code-header__brand" href="index.html" aria-label="Return to BTMN home">BTMN</a>
-  </header>
+  <aside class="left-menu" aria-label="Site navigation">
+    <div class="left-menu-top">
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="left-menu-middle" aria-hidden="true">BTMN</div>
+    <button class="sound-toggle" type="button" aria-label="Unmute theme song" aria-pressed="false">SOUND OFF</button>
+    <time class="left-menu-bottom" datetime="">00:00</time>
+    <nav class="section-nav">
+      <a class="section-nav-item" href="index.html#intro"><span class="section-nav-item-number">01</span><span>Home</span></a>
+      <a class="section-nav-item" href="index.html#panel-1"><span class="section-nav-item-number">02</span><span>Training</span></a>
+      <a class="section-nav-item" href="index.html#panel-2"><span class="section-nav-item-number">03</span><span>Arsenal</span></a>
+      <a class="section-nav-item" href="index.html#panel-3"><span class="section-nav-item-number">04</span><span>Fear</span></a>
+      <a class="section-nav-item" href="index.html#panel-4"><span class="section-nav-item-number">05</span><span>Gotham</span></a>
+      <a class="section-nav-item" href="index.html#panel-5"><span class="section-nav-item-number">06</span><span>Mission</span></a>
+      <a class="section-nav-item active" href="code.html"><span class="section-nav-item-number">07</span><span>The Code</span></a>
+      <a class="section-nav-item" href="index.html#bat-signal"><span class="section-nav-item-number">08</span><span>The Signal</span></a>
+      <a class="section-nav-item" href="index.html#zoom-showcase"><span class="section-nav-item-number">09</span><span>Case Files</span></a>
+      <a class="section-nav-item" href="index.html#mission-briefing"><span class="section-nav-item-number">10</span><span>About BTMN</span></a>
+    </nav>
+  </aside>
 
-  <main>
+  <main class="site-content">
+    <audio id="theme-song" src="assets/btmn_theme_1989.mp3" loop preload="auto" muted></audio>
     <section class="code-hero" aria-labelledby="code-title">
       <div class="code-hero__stars" aria-hidden="true">
         <div id="stars"></div>
@@ -116,6 +136,38 @@
       <p class="airlock-closing__tagline">Everything you know fits in one half of the frame.</p>
       <div class="airlock-closing__progress" aria-hidden="true"><span></span></div>
     </section>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="site-footer__surface" aria-hidden="true"></div>
+      <div class="site-footer__content">
+        <p class="site-footer__wordmark" aria-label="BTMN"><span>B</span><span>T</span><span>M</span><span>N</span></p>
+        <div class="site-footer__columns">
+          <div class="site-footer__column">
+            <h2>Navigate</h2>
+            <a href="index.html#intro">Studio</a>
+            <a href="index.html#mission-briefing">Approach</a>
+            <a href="index.html#panel-2">Projects</a>
+            <a href="code.html">The Code</a>
+          </div>
+          <div class="site-footer__column">
+            <h2>Follow</h2>
+            <a href="index.html#mission-briefing">Instagram</a>
+            <a href="index.html#mission-briefing">LinkedIn</a>
+            <a href="index.html#mission-briefing">Vimeo</a>
+          </div>
+          <div class="site-footer__column">
+            <h2>Visit</h2>
+            <p>By appointment only</p>
+            <p>730 Prangley Ave.<br>Lancaster, PA 17603</p>
+          </div>
+        </div>
+        <div class="site-footer__base">
+          <span>All rights reserved. All wrongs restored.</span>
+          <span>Work hard. Be satisfied.</span>
+          <span>&copy; 2026, made by btmn</span>
+        </div>
+      </div>
+    </footer>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -202,6 +254,54 @@
 
     airlockVideo.addEventListener('loadedmetadata', setupAirlock, { once: true });
     if (airlockVideo.readyState >= 1) setupAirlock();
+
+    const leftMenu = document.querySelector('.left-menu');
+    const menuBtn = document.querySelector('.menu-btn');
+    const sectionNavItems = [...document.querySelectorAll('.section-nav-item')];
+    const themeSong = document.querySelector('#theme-song');
+    const soundToggle = document.querySelector('.sound-toggle');
+    const clock = document.querySelector('.left-menu-bottom');
+
+    function setMenuExpanded(expanded) {
+      leftMenu.classList.toggle('expanded', expanded);
+      menuBtn.setAttribute('aria-expanded', String(expanded));
+      menuBtn.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
+    }
+
+    function updateSoundControl() {
+      const isPlaying = !themeSong.muted;
+      soundToggle.textContent = isPlaying ? 'SOUND ON' : 'SOUND OFF';
+      soundToggle.setAttribute('aria-label', isPlaying ? 'Mute theme song' : 'Unmute theme song');
+      soundToggle.setAttribute('aria-pressed', String(isPlaying));
+      soundToggle.classList.toggle('is-playing', isPlaying);
+    }
+
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      clock.dateTime = now.toISOString();
+    }
+
+    menuBtn.addEventListener('click', () => setMenuExpanded(!leftMenu.classList.contains('expanded')));
+    sectionNavItems.forEach(item => item.addEventListener('click', () => setMenuExpanded(false)));
+    soundToggle.addEventListener('click', async () => {
+      if (!themeSong.muted) {
+        themeSong.muted = true;
+        updateSoundControl();
+        return;
+      }
+      themeSong.muted = false;
+      try {
+        await themeSong.play();
+      } catch (error) {
+        themeSong.muted = true;
+      }
+      updateSoundControl();
+    });
+
+    updateSoundControl();
+    updateClock();
+    setInterval(updateClock, 60000);
   </script>
 </body>
 </html>
