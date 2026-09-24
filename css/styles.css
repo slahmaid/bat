@@ -1477,6 +1477,83 @@ body {
   line-height: 1.45;
 }
 
+.airlock-closing {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #05070d;
+  color: #f2f4f8;
+}
+
+.airlock-closing__video,
+.airlock-closing__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.airlock-closing__video {
+  object-fit: cover;
+  opacity: .9;
+  transform-origin: center;
+}
+
+.airlock-closing__shade {
+  background: radial-gradient(ellipse 62% 44% at 50% 50%, rgba(5, 7, 13, .7), rgba(5, 7, 13, 0) 72%);
+  pointer-events: none;
+}
+
+.airlock-closing__title,
+.airlock-closing__tagline {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  left: 8%;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.airlock-closing__title .eyebrow {
+  color: #c5ef42;
+}
+
+.airlock-closing__title h2 {
+  margin: 24px 0 0;
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  line-height: .86;
+  letter-spacing: -.07em;
+}
+
+.airlock-closing__tagline {
+  opacity: 0;
+  font-size: clamp(1.4rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, .6);
+}
+
+.airlock-closing__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  height: 3px;
+  background: rgba(255, 255, 255, .16);
+}
+
+.airlock-closing__progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, .45), rgba(255, 255, 255, .95));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
 @media (max-width: 480px) {
   .code-header {
     padding: 22px 20px;
@@ -1537,6 +1614,16 @@ body {
 
   .daily-protocol__quote {
     font-size: clamp(2.25rem, 11vw, 4rem);
+  }
+
+  .airlock-closing__title,
+  .airlock-closing__tagline {
+    right: 20px;
+    left: 20px;
+  }
+
+  .airlock-closing__title h2 {
+    font-size: clamp(3.1rem, 14vw, 5rem);
   }
 }
 

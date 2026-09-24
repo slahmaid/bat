@@ -103,6 +103,19 @@
         <p class="daily-protocol__note">The work becomes instinct when it is repeated with intention.</p>
       </div>
     </section>
+
+    <section class="airlock-closing" aria-labelledby="airlock-title">
+      <video class="airlock-closing__video" poster="https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-poster.jpg" muted playsinline preload="auto" aria-hidden="true">
+        <source src="https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-1080p.mp4" type="video/mp4">
+      </video>
+      <div class="airlock-closing__shade" aria-hidden="true"></div>
+      <div class="airlock-closing__title">
+        <p class="eyebrow">BTMN / CLOSING FILE</p>
+        <h2 id="airlock-title">The airlock opens.</h2>
+      </div>
+      <p class="airlock-closing__tagline">Everything you know fits in one half of the frame.</p>
+      <div class="airlock-closing__progress" aria-hidden="true"><span></span></div>
+    </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -155,6 +168,40 @@
 
     ScrollTrigger.addEventListener('refresh', setupProtocolAnimation);
     setupProtocolAnimation();
+
+    const airlock = document.querySelector('.airlock-closing');
+    const airlockVideo = airlock.querySelector('video');
+    const airlockTitle = airlock.querySelector('.airlock-closing__title');
+    const airlockTagline = airlock.querySelector('.airlock-closing__tagline');
+    const airlockShade = airlock.querySelector('.airlock-closing__shade');
+    const airlockProgress = airlock.querySelector('.airlock-closing__progress span');
+
+    function setupAirlock() {
+      if (!airlockVideo.duration || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      gsap.to(airlockVideo, {
+        currentTime: Math.max(0, airlockVideo.duration - .05),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: airlock,
+          start: 'top top',
+          end: '+=3200',
+          pin: true,
+          scrub: true,
+          onUpdate: self => {
+            const progress = self.progress;
+            airlockTitle.style.opacity = String(1 - Math.min(progress / .35, 1));
+            airlockTitle.style.transform = `translateY(${progress * -24}px) scale(${.96 + (1 - progress) * .04})`;
+            airlockTagline.style.opacity = String(Math.max(0, (progress - .8) / .2));
+            airlockTagline.style.transform = `translateY(${(1 - Math.max(0, (progress - .8) / .2)) * 20}px)`;
+            airlockShade.style.opacity = String(Math.max(1 - progress / .35, Math.max(0, (progress - .8) / .2)));
+            airlockProgress.style.transform = `scaleX(${progress})`;
+          }
+        }
+      });
+    }
+
+    airlockVideo.addEventListener('loadedmetadata', setupAirlock, { once: true });
+    if (airlockVideo.readyState >= 1) setupAirlock();
   </script>
 </body>
 </html>
