@@ -1436,24 +1436,6 @@ body {
   color: #dfdcff;
 }
 
-.daily-protocol__scroll {
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  color: rgba(223, 220, 255, .68);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.daily-protocol__scroll span {
-  margin-left: 12px;
-  color: var(--lime);
-  font-size: 1.2rem;
-}
-
 .daily-protocol__wrap {
   position: absolute;
   top: 50%;
