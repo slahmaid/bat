@@ -43,7 +43,6 @@ body {
   overflow: hidden;
   background: #111;
   color: var(--paper);
-  border-right: 1px solid rgba(255, 255, 255, .08);
   transition: width 400ms cubic-bezier(.16, 1, .3, 1), box-shadow 400ms ease;
 }
 
@@ -714,7 +713,6 @@ body {
 .mission-grid {
   display: grid;
   gap: 0;
-  border-top: 1px solid rgba(248, 248, 245, .2);
 }
 
 .mission-capability {
@@ -722,7 +720,6 @@ body {
   grid-template-columns: 42px 1fr;
   gap: 12px;
   padding: 22px 0;
-  border-bottom: 1px solid rgba(248, 248, 245, .2);
 }
 
 .mission-capability span {
