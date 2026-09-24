@@ -885,6 +885,18 @@ body {
     padding-left: 52px;
   }
 
+  .menu-btn {
+    width: 44px;
+    height: 44px;
+    padding: 12px 10px;
+  }
+
+  .section-nav-item {
+    min-height: 44px;
+    margin: 2px 0;
+    padding: 8px 0;
+  }
+
   .description {
     min-height: 100svh;
     padding: 104px 20px 64px;
@@ -987,6 +999,15 @@ body {
 
   .mission-grid {
     margin-top: 88px;
+  }
+
+  .site-footer__column {
+    gap: 9px;
+    line-height: 1.5;
+  }
+
+  .site-footer__column a {
+    min-height: 28px;
   }
 
   .text-lab__container {
@@ -1561,7 +1582,7 @@ body {
   }
 
   .code-hero h1 {
-    font-size: clamp(3.5rem, 16vw, 5.5rem);
+    font-size: clamp(3rem, 14vw, 5.5rem);
   }
 
   .code-hero__statement {
@@ -1592,8 +1613,14 @@ body {
   }
 
   .code-manifesto__intro {
-    min-height: 50vh;
+    min-height: 50svh;
     padding: 72px 20px;
+  }
+
+  .manifesto-track,
+  .manifesto-panel,
+  .airlock-closing {
+    height: 100svh;
   }
 
   .manifesto-panel {
@@ -1621,6 +1648,10 @@ body {
 
   .airlock-closing__title h2 {
     font-size: clamp(3.1rem, 14vw, 5rem);
+  }
+
+  .site-footer__base {
+    font-size: .58rem;
   }
 }
 
