@@ -1065,7 +1065,7 @@ body {
 
 .code-page {
   min-width: 320px;
-  background: #1b2735;
+  background: #090a0f;
   color: #fff;
 }
 
@@ -1123,7 +1123,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  background: #010701;
 }
 
 .code-hero__stars {
@@ -1229,7 +1229,7 @@ body {
   place-content: center;
   justify-items: center;
   padding: 80px 24px;
-  background: #1b2735;
+  background: #010701;
   text-align: center;
 }
 
