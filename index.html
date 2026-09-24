@@ -30,7 +30,7 @@
         <a class="section-nav-item anchor" href="#panel-3" data-index="3"><span class="section-nav-item-number">04</span><span>Fear</span></a>
         <a class="section-nav-item anchor" href="#panel-4" data-index="4"><span class="section-nav-item-number">05</span><span>Gotham</span></a>
         <a class="section-nav-item anchor" href="#panel-5" data-index="5"><span class="section-nav-item-number">06</span><span>Mission</span></a>
-        <a class="section-nav-item anchor" href="#text-lab" data-index="6"><span class="section-nav-item-number">07</span><span>The Code</span></a>
+        <a class="section-nav-item anchor" href="code.html" data-index="6"><span class="section-nav-item-number">07</span><span>The Code</span></a>
         <a class="section-nav-item anchor" href="#bat-signal" data-index="7"><span class="section-nav-item-number">08</span><span>The Signal</span></a>
         <a class="section-nav-item anchor" href="#zoom-showcase" data-index="8"><span class="section-nav-item-number">09</span><span>Case Files</span></a>
         <a class="section-nav-item anchor" href="#mission-briefing" data-index="9"><span class="section-nav-item-number">10</span><span>About BTMN</span></a>
@@ -67,17 +67,9 @@
         </div>
       </section>
 
-      <section id="text-lab" class="text-lab" aria-label="The Code">
-        <div class="code-hero__stars" aria-hidden="true">
-          <div id="stars"></div>
-          <div id="stars2"></div>
-          <div id="stars3"></div>
-        </div>
-        <div class="text-lab__container code-hero__content">
-          <p class="eyebrow">BTMN / THE CODE</p>
-          <h2>No shortcuts.<br>No excuses.</h2>
-          <p class="text code-hero__statement">Fear is information. Discipline is the power. The code is practiced, not inherited.</p>
-          <a class="mission-link" href="#panel-1">Explore training <span aria-hidden="true">&#8599;</span></a>
+      <section id="text-lab" class="text-lab" aria-label="Text animation demo">
+        <div class="text-lab__container">
+          <p class="text">Fear is a weapon. Discipline is the power. BTMN is what happens when a human refuses to stay ordinary.</p>
         </div>
       </section>
 
@@ -187,6 +179,7 @@
 
     document.querySelectorAll('.anchor').forEach(anchor => {
       anchor.addEventListener('click', event => {
+        if (!anchor.getAttribute('href').startsWith('#')) return;
         event.preventDefault();
         const target = document.querySelector(anchor.getAttribute('href'));
         let destination = target;
