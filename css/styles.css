@@ -1130,7 +1130,7 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  opacity: .82;
+  opacity: .96;
 }
 
 #stars,
@@ -1142,23 +1142,23 @@ body {
   width: 1px;
   height: 1px;
   background: transparent;
-  box-shadow: 120px 180px #fff, 280px 90px #fff, 430px 340px #fff, 610px 140px #fff, 760px 480px #fff, 920px 230px #fff, 1080px 90px #fff, 1240px 390px #fff, 1410px 170px #fff, 1580px 470px #fff, 1760px 260px #fff, 1900px 560px #fff, 70px 650px #fff, 350px 740px #fff, 540px 590px #fff, 840px 700px #fff, 1170px 620px #fff, 1490px 760px #fff, 1810px 690px #fff;
+  box-shadow: 120px 180px #fff, 280px 90px #fff, 430px 340px #fff, 610px 140px #fff, 760px 480px #fff, 920px 230px #fff, 1080px 90px #fff, 1240px 390px #fff, 1410px 170px #fff, 1580px 470px #fff, 1760px 260px #fff, 1900px 560px #fff, 70px 650px #fff, 350px 740px #fff, 540px 590px #fff, 840px 700px #fff, 1170px 620px #fff, 1490px 760px #fff, 1810px 690px #fff, 210px 520px #fff, 500px 40px #fff, 690px 360px #fff, 880px 610px #fff, 1020px 430px #fff, 1190px 760px #fff, 1360px 520px #fff, 1510px 40px #fff, 1680px 640px #fff, 1840px 380px #fff, 1980px 120px #fff, 40px 360px #fff, 300px 680px #fff;
   animation: code-stars-drift 52s linear infinite;
 }
 
 #stars2 {
   width: 2px;
   height: 2px;
-  opacity: .7;
-  box-shadow: 180px 420px #fff, 390px 180px #fff, 570px 530px #fff, 800px 300px #fff, 1040px 500px #fff, 1320px 250px #fff, 1540px 580px #fff, 1870px 120px #fff;
+  opacity: .82;
+  box-shadow: 180px 420px #fff, 390px 180px #fff, 570px 530px #fff, 800px 300px #fff, 1040px 500px #fff, 1320px 250px #fff, 1540px 580px #fff, 1870px 120px #fff, 90px 120px #fff, 470px 650px #fff, 730px 90px #fff, 970px 520px #fff, 1140px 170px #fff, 1450px 700px #fff, 1730px 430px #fff, 1950px 680px #fff;
   animation-duration: 86s;
 }
 
 #stars3 {
   width: 3px;
   height: 3px;
-  opacity: .45;
-  box-shadow: 250px 300px #fff, 680px 160px #fff, 990px 600px #fff, 1380px 420px #fff, 1710px 180px #fff;
+  opacity: .62;
+  box-shadow: 250px 300px #fff, 680px 160px #fff, 990px 600px #fff, 1380px 420px #fff, 1710px 180px #fff, 420px 720px #fff, 860px 420px #fff, 1250px 100px #fff, 1600px 680px #fff, 1880px 300px #fff;
   animation-duration: 130s;
 }
 
