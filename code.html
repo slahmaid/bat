@@ -31,11 +31,44 @@
       <div class="code-hero__index" aria-hidden="true">01 / 05</div>
     </section>
 
-    <section id="principles" class="code-placeholder" aria-labelledby="principles-title">
-      <p class="eyebrow">THE NEXT FILE</p>
-      <h2 id="principles-title">The principles are being written.</h2>
-      <a class="mission-link" href="index.html#panel-1">Enter training <span aria-hidden="true">&#8599;</span></a>
+    <section id="principles" class="code-rules" aria-labelledby="principles-title">
+      <div class="code-rules__heading">
+        <p class="eyebrow">THE THREE RULES</p>
+        <h2 id="principles-title">The code is practiced.</h2>
+      </div>
+      <div class="rules-cards">
+        <article class="rule-card" style="--clr: #6cc0e5">
+          <div class="rule-card__content">
+            <span class="rule-card__number">01</span>
+            <h3>Prepare</h3>
+            <p>Know the situation before you enter it. Preparation turns uncertainty into options.</p>
+          </div>
+        </article>
+        <article class="rule-card" style="--clr: #fbc93d">
+          <div class="rule-card__content">
+            <span class="rule-card__number">02</span>
+            <h3>Adapt</h3>
+            <p>Change the plan without losing the mission. Flexibility is strength under pressure.</p>
+          </div>
+        </article>
+        <article class="rule-card" style="--clr: #fb4f4f">
+          <div class="rule-card__content">
+            <span class="rule-card__number">03</span>
+            <h3>Endure</h3>
+            <p>Keep moving when motivation disappears. The code holds when comfort does not.</p>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
+  <script>
+    document.querySelectorAll('.rule-card').forEach(card => {
+      card.addEventListener('pointermove', event => {
+        const bounds = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${event.clientX - bounds.left}px`);
+        card.style.setProperty('--y', `${event.clientY - bounds.top}px`);
+      });
+    });
+  </script>
 </body>
 </html>
