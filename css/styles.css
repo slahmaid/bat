@@ -1081,8 +1081,7 @@ body {
   padding: 28px clamp(24px, 5vw, 80px);
 }
 
-.code-header__brand,
-.code-header__back {
+.code-header__brand {
   color: #fff;
   font-size: .72rem;
   font-weight: 700;
@@ -1095,21 +1094,6 @@ body {
   font-size: 1rem;
 }
 
-.code-header__back {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  opacity: .72;
-  transition: color 180ms ease, opacity 180ms ease;
-}
-
-.code-header__back:hover,
-.code-header__back:focus-visible {
-  color: var(--lime);
-  opacity: 1;
-}
-
-.code-header__back:focus-visible,
 .code-header__brand:focus-visible,
 .code-hero__action:focus-visible {
   outline: 2px solid var(--lime);
@@ -1248,10 +1232,6 @@ body {
 @media (max-width: 480px) {
   .code-header {
     padding: 22px 20px;
-  }
-
-  .code-header__back {
-    font-size: .62rem;
   }
 
   .code-hero__content {
