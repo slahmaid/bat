@@ -227,9 +227,11 @@
     const airlockTagline = airlock.querySelector('.airlock-closing__tagline');
     const airlockShade = airlock.querySelector('.airlock-closing__shade');
     const airlockProgress = airlock.querySelector('.airlock-closing__progress span');
+    let airlockReady = false;
 
     function setupAirlock() {
-      if (!airlockVideo.duration || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (airlockReady || !airlockVideo.duration || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      airlockReady = true;
       gsap.to(airlockVideo, {
         currentTime: Math.max(0, airlockVideo.duration - .05),
         ease: 'none',
@@ -252,6 +254,7 @@
       });
     }
 
+    airlockVideo.addEventListener('error', () => airlock.classList.add('airlock-closing--fallback'));
     airlockVideo.addEventListener('loadedmetadata', setupAirlock, { once: true });
     if (airlockVideo.readyState >= 1) setupAirlock();
 

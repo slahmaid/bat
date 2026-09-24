@@ -1499,7 +1499,10 @@ body {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: #05070d;
+  background-color: #05070d;
+  background-image: url('https://cdn.jsdelivr.net/gh/yuraoak/airlock-hero-assets@main/iss-hero-poster.jpg'), url('../assets/Desktop.webp');
+  background-position: center, center;
+  background-size: cover, cover;
   color: #f2f4f8;
 }
 
@@ -1570,6 +1573,19 @@ body {
   background: linear-gradient(90deg, rgba(255, 255, 255, .45), rgba(255, 255, 255, .95));
   transform: scaleX(0);
   transform-origin: left;
+}
+
+.airlock-closing--fallback .airlock-closing__video {
+  display: none;
+}
+
+.airlock-closing--fallback .airlock-closing__tagline {
+  opacity: 1;
+  transform: none;
+}
+
+.airlock-closing--fallback .airlock-closing__shade {
+  opacity: .8;
 }
 
 @media (max-width: 480px) {
