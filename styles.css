@@ -1017,12 +1017,12 @@ body {
   }
 
   .site-footer {
-    min-height: 640px;
+    min-height: 720px;
   }
 
   .site-footer__content {
-    min-height: 640px;
-    padding: 36px 20px 18px;
+    min-height: 720px;
+    padding: 36px 20px 24px;
   }
 
   .site-footer__wordmark {
@@ -1036,9 +1036,16 @@ body {
   }
 
   .site-footer__base {
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin-top: 48px;
+    font-size: .5rem;
+    line-height: 1.35;
+  }
+
+  .site-footer__base span:last-child {
+    grid-column: 1 / -1;
   }
 }
 
