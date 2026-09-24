@@ -21,6 +21,7 @@
         </button>
       </div>
       <div class="left-menu-middle" aria-hidden="true">BATMAN</div>
+      <button class="sound-toggle" type="button" aria-label="Unmute theme song" aria-pressed="false">SOUND OFF</button>
       <time class="left-menu-bottom" datetime="">00:00</time>
       <nav class="section-nav">
         <a class="section-nav-item anchor" href="#intro" data-index="0"><span class="section-nav-item-number">01</span><span>Home</span></a>
@@ -37,6 +38,7 @@
     </aside>
 
     <main id="content" class="site-content">
+      <audio id="theme-song" src="batman_theme_1989.mp3" loop preload="auto" muted></audio>
       <section id="intro" class="description panel">
         <div>
           <p class="eyebrow">BATMAN / NO SUPERPOWERS</p>
@@ -48,19 +50,19 @@
       <section id="panels" aria-label="Horizontal panels">
         <div id="panels-container">
           <article id="panel-1" class="panel full-screen black-panel">
-            <div class="container"><div class="row"><div class="col-6 panel-art"><span>01</span></div><div class="col-6 panel-copy"><p>Discipline is the first superpower.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-2" class="anchor">Next <span aria-hidden="true">&#8594;</span></a></div></div></div></div></div>
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>01</span></div><div class="col-6 panel-copy"><p>Discipline is the first superpower.</p><button class="play-button" type="button" aria-expanded="false"><span>DISCOVER</span></button><p class="panel-detail">Train until the hard choice becomes the automatic one.</p><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-2" class="anchor">Next <span aria-hidden="true">&#8594;</span></a></div></div></div></div></div>
           </article>
           <article id="panel-2" class="panel full-screen light-panel">
-            <div class="container"><div class="row"><div class="col-6 panel-art"><span>02</span></div><div class="col-6 panel-copy"><p>Gadgets turn preparation into power.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-1" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-3" class="anchor">Next &#8594;</a></div></div></div></div></div>
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>02</span></div><div class="col-6 panel-copy"><p>Gadgets turn preparation into power.</p><button class="play-button" type="button" aria-expanded="false"><span>DISCOVER</span></button><p class="panel-detail">Every tool has one job: make the next decision clearer.</p><div class="panels-navigation"><div class="nav-panel"><a href="#panel-1" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-3" class="anchor">Next &#8594;</a></div></div></div></div></div>
           </article>
           <article id="panel-3" class="panel full-screen black-panel">
-            <div class="container"><div class="row"><div class="col-6 panel-art"><span>03</span></div><div class="col-6 panel-copy"><p>Make fear look the other way.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-2" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-4" class="anchor">Next &#8594;</a></div></div></div></div></div>
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>03</span></div><div class="col-6 panel-copy"><p>Make fear look the other way.</p><button class="play-button" type="button" aria-expanded="false"><span>DISCOVER</span></button><p class="panel-detail">A symbol can enter a room before you do. Use it wisely.</p><div class="panels-navigation"><div class="nav-panel"><a href="#panel-2" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-4" class="anchor">Next &#8594;</a></div></div></div></div></div>
           </article>
           <article id="panel-4" class="panel full-screen light-panel">
-            <div class="container"><div class="row"><div class="col-6 panel-art"><span>04</span></div><div class="col-6 panel-copy"><p>Gotham never sleeps. Neither does he.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation"><div class="nav-panel"><a href="#panel-3" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-5" class="anchor">Next &#8594;</a></div></div></div></div></div>
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>04</span></div><div class="col-6 panel-copy"><p>Gotham never sleeps. Neither does he.</p><button class="play-button" type="button" aria-expanded="false"><span>DISCOVER</span></button><p class="panel-detail">The city is a system. Learn its rhythms and protect its blind spots.</p><div class="panels-navigation"><div class="nav-panel"><a href="#panel-3" class="anchor">&#8592; Prev</a></div><div class="nav-panel"><a href="#panel-5" class="anchor">Next &#8594;</a></div></div></div></div></div>
           </article>
           <article id="panel-5" class="panel full-screen black-panel">
-            <div class="container"><div class="row"><div class="col-6 panel-art"><span>05</span></div><div class="col-6 panel-copy"><p>One man. One mission. Zero excuses.</p><button class="play-button" type="button"><span>DISCOVER</span></button><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-4" class="anchor">&#8592; Prev</a></div></div></div></div></div>
+            <div class="container"><div class="row"><div class="col-6 panel-art"><span>05</span></div><div class="col-6 panel-copy"><p>One man. One mission. Zero excuses.</p><button class="play-button" type="button" aria-expanded="false"><span>DISCOVER</span></button><p class="panel-detail">The mission is simple enough to repeat and difficult enough to matter.</p><div class="panels-navigation text-right"><div class="nav-panel"><a href="#panel-4" class="anchor">&#8592; Prev</a></div></div></div></div></div>
           </article>
         </div>
       </section>
@@ -157,6 +159,15 @@
       });
     });
 
+    document.querySelectorAll('.play-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        button.querySelector('span').textContent = expanded ? 'DISCOVER' : 'CLOSE';
+        button.closest('.panel-copy').classList.toggle('is-revealed', !expanded);
+      });
+    });
+
     const leftMenu = document.querySelector('.left-menu');
     const menuBtn = document.querySelector('.menu-btn');
     const sectionNavItems = [...document.querySelectorAll('.section-nav-item')];
@@ -171,6 +182,34 @@
     sectionNavItems.forEach(item => item.addEventListener('click', () => setMenuExpanded(false)));
 
     const clock = document.querySelector('.left-menu-bottom');
+    const themeSong = document.querySelector('#theme-song');
+    const soundToggle = document.querySelector('.sound-toggle');
+
+    function updateSoundControl() {
+      const isPlaying = !themeSong.muted;
+      soundToggle.textContent = isPlaying ? 'SOUND ON' : 'SOUND OFF';
+      soundToggle.setAttribute('aria-label', isPlaying ? 'Mute theme song' : 'Unmute theme song');
+      soundToggle.setAttribute('aria-pressed', String(isPlaying));
+      soundToggle.classList.toggle('is-playing', isPlaying);
+    }
+
+    soundToggle.addEventListener('click', async () => {
+      if (!themeSong.muted) {
+        themeSong.muted = true;
+        updateSoundControl();
+        return;
+      }
+      themeSong.muted = false;
+      try {
+        await themeSong.play();
+      } catch (error) {
+        themeSong.muted = true;
+      }
+      updateSoundControl();
+    });
+
+    themeSong.play().catch(() => {});
+    updateSoundControl();
 
     function updateClock() {
       const now = new Date();
